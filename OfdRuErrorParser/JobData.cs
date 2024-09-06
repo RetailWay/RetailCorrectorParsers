@@ -16,6 +16,9 @@ namespace OfdRuErrorParser
         public bool income;
         public bool refund;
 
+        public Operation(int value) =>
+            (income, refund) = (value/3==0, value % 2 == 0);
+
         public Operation(string value) =>
             (income, refund) = (value.EndsWith("ncome"), value.StartsWith("Refund"));
 

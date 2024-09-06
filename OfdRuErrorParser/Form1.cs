@@ -26,19 +26,6 @@ namespace OfdRuErrorParser
             InitializeComponent();
         }
 
-        private void clckScan(object sender, EventArgs e)
-        {
-            http = new HttpClient();
-            LogSettings();
-            Logger.Info("Начало сканирования.");
-            if (inpDefName.Text == "")
-            {
-                Logger.Info("Сканирование завершено с ошибкой: Значение названия позиции по-умолчанию обязательно!");
-                return;
-            }
-            new Thread(Scan) { IsBackground = true }.Start();
-        }
-
         private void SetActive(bool isActive)
         {
             Invoke(new MethodInvoker(delegate ()
@@ -245,56 +232,60 @@ namespace OfdRuErrorParser
         {
             try
             {
-            Logger.Info($"Сканирование чеков за {d:yyyy-MM-dd}");
-            Invoke(new MethodInvoker(delegate () { textStatus.Text = $"Сканирование чеков за {d:yyyy-MM-dd}"; }));
-            var df = $"{d:yyyy-MM-dd}T00:00:00";
-            var dt = $"{d:yyyy-MM-dd}T{d:HH:mm:ss}";
-            var uri = $"https://ofd.ru/api/integration/v2/inn/{Vatin}/kkt/{RegId}/receipts-info?dateFrom={df}&dateTo={dt}&AuthToken={Token}";
-            var resp = await http.GetAsync(uri);
-            var raw = await resp.Content.ReadAsStringAsync();
-            var json = JObject.Parse(raw);
-            var errors = json["Data"].Where(i => (string)i["FnsStatus"] == "Error").ToArray();
-            if (errors.Length == 0) return;
-            foreach (var data in errors)
-            {
-                var rec = new Receipt
+                Logger.Info($"Сканирование чеков за {d:yyyy-MM-dd}");
+                Invoke(new MethodInvoker(delegate () { textStatus.Text = $"Сканирование чеков за {d:yyyy-MM-dd}"; }));
+                var df = $"{d:yyyy-MM-dd}T00:00:00";
+                var dt = $"{d:yyyy-MM-dd}T{d:HH:mm:ss}";
+                var uri = $"https://ofd.ru/api/integration/v2/inn/{Vatin}/kkt/{RegId}/receipts-info?dateFrom={df}&dateTo={dt}&AuthToken={Token}";
+                var resp = await http.GetAsync(uri);
+                var raw = await resp.Content.ReadAsStringAsync();
+                var settings = new JsonSerializerSettings
                 {
-                    items = new Position[(int)data["Depth"]],
-                    payment = new Payment
-                    {
-                        cash = (double)data["CashSumm"] / 100,
-                        ecash = (double)data["ECashSumm"] / 100,
-                        prepaid = (double)data["PrepaidSumm"] / 100,
-                        credit = (double)data["CreditSumm"] / 100
-                    },
-                    correction = new CorrectionData
-                    {
-                        orderId = " ",
-                        sign = (string)data["DecimalFiscalSign"],
-                        date = DateTime.Parse((string)data["DocDateTime"])
-                    },
-                    total = (double)data["TotalSumm"] / 100,
-                    operation = new Operation((string)data["OperationType"])
+                    DateFormatString = "yyyy-MM-ddTHH:mm:ss"
                 };
-                for (var i = 0; i < rec.items.Length; i++)
+                var json = (JObject)JsonConvert.DeserializeObject(raw, settings);
+                var errors = json["Data"].Where(i => (string)i["FnsStatus"] == "Error").ToArray();
+                if (errors.Length == 0) return;
+                foreach (var data in errors)
                 {
-                    var pos = data["Items"][i];
-                    var item = new Position
+                    var rec = new Receipt
                     {
-                        name = pos["Name"] != null ? (string)pos["Name"] : inpDefName.Text,
-                        price = (double)pos["Price"] / 100,
-                        quantity = (double)pos["Quantity"],
-                        total = (double)pos["Total"] / 100,
-                        payment = (int)pos["CalculationMethod"],
-                        tax = (int)pos["NDS_Rate"],
-                        measure = pos["ProductUnitOfMeasure"] != null ? (int)pos["ProductUnitOfMeasure"] : Measure,
-                        type = pos["SubjectType"] != null ? (int)pos["SubjectType"] : SubjectType
+                        items = new Position[(int)data["Depth"]],
+                        payment = new Payment
+                        {
+                            cash = (double)data["CashSumm"] / 100,
+                            ecash = (double)data["ECashSumm"] / 100,
+                            prepaid = (double)data["PrepaidSumm"] / 100,
+                            credit = (double)data["CreditSumm"] / 100
+                        },
+                        correction = new CorrectionData
+                        {
+                            orderId = " ",
+                            sign = (string)data["DecimalFiscalSign"],
+                            date = DateTime.Parse((string)data["DocDateTime"])
+                        },
+                        total = (double)data["TotalSumm"] / 100,
+                        operation = new Operation((string)data["OperationType"])
                     };
-                    rec.items[i] = item;
+                    for (var i = 0; i < rec.items.Length; i++)
+                    {
+                        var pos = data["Items"][i];
+                        var item = new Position
+                        {
+                            name = pos["Name"] != null ? (string)pos["Name"] : inpDefName.Text,
+                            price = (double)pos["Price"] / 100,
+                            quantity = (double)pos["Quantity"],
+                            total = (double)pos["Total"] / 100,
+                            payment = (int)pos["CalculationMethod"],
+                            tax = (int)pos["NDS_Rate"],
+                            measure = pos["ProductUnitOfMeasure"] != null ? (int)pos["ProductUnitOfMeasure"] : Measure,
+                            type = pos["SubjectType"] != null ? (int)pos["SubjectType"] : SubjectType
+                        };
+                        rec.items[i] = item;
+                    }
+                    Receipts.Add(rec);
                 }
-                Receipts.Add(rec);
             }
-        }
             catch (Exception e)
             {
                 if(totalCount < MaxCountTry)
@@ -302,7 +293,7 @@ namespace OfdRuErrorParser
                     Logger.Error($"Неудачная попытка: {e.Message}.");
                     SendSearch(d, ++totalCount);
                 }
-    }
+            }
         }
 
         private void LogSettings()
@@ -331,6 +322,29 @@ namespace OfdRuErrorParser
             {
                 inpToken.Text = "";
                 inpToken.Enabled = true;
+            }
+        }
+
+        private void btnScan_MouseDown(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                case MouseButtons.Left:
+                    http = new HttpClient();
+                    LogSettings();
+                    Logger.Info("Начало сканирования.");
+                    if (inpDefName.Text == "")
+                    {
+                        Logger.Info("Сканирование завершено с ошибкой: Значение названия позиции по-умолчанию обязательно!");
+                        return;
+                    }
+                    new Thread(Scan) { IsBackground = true }.Start();
+                    break;
+                case MouseButtons.Middle:
+                    new Manual().Show();
+                    Program.main.Hide();
+                    break;
             }
         }
     }

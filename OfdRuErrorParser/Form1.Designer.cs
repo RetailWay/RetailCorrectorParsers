@@ -30,22 +30,22 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
             this.inpDefType = new System.Windows.Forms.ComboBox();
-            this.inpDefName = new System.Windows.Forms.TextBox();
-            this.inpRegId = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.inpToken = new System.Windows.Forms.TextBox();
-            this.inpPeriodBegin = new System.Windows.Forms.DateTimePicker();
-            this.inpPeriodEnd = new System.Windows.Forms.DateTimePicker();
-            this.inpDefMeasure = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.inpVatin = new System.Windows.Forms.TextBox();
+            this.inpRegId = new System.Windows.Forms.TextBox();
+            this.inpPeriodEnd = new System.Windows.Forms.DateTimePicker();
+            this.inpPeriodBegin = new System.Windows.Forms.DateTimePicker();
+            this.inpDefMeasure = new System.Windows.Forms.ComboBox();
+            this.inpDefName = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.textStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.progressStatus = new System.Windows.Forms.ProgressBar();
@@ -90,19 +90,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(320, 210);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 26);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(202, 26);
-            this.label4.TabIndex = 101;
-            this.label4.Text = "ИНН организации";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // inpDefType
             // 
@@ -149,24 +136,6 @@
             this.inpDefType.TabIndex = 6;
             this.inpDefType.Text = "Т";
             // 
-            // inpDefName
-            // 
-            this.inpDefName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.inpDefName.Location = new System.Drawing.Point(211, 133);
-            this.inpDefName.Name = "inpDefName";
-            this.inpDefName.Size = new System.Drawing.Size(106, 20);
-            this.inpDefName.TabIndex = 5;
-            // 
-            // inpRegId
-            // 
-            this.inpRegId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.inpRegId.Location = new System.Drawing.Point(211, 55);
-            this.inpRegId.Name = "inpRegId";
-            this.inpRegId.Size = new System.Drawing.Size(106, 20);
-            this.inpRegId.TabIndex = 2;
-            // 
             // label13
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -179,6 +148,80 @@
             this.label13.TabIndex = 102;
             this.label13.Text = "Тип позиции по-умолчанию";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(202, 26);
+            this.label1.TabIndex = 108;
+            this.label1.Text = "Токен";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // inpToken
+            // 
+            this.inpToken.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.inpToken.Location = new System.Drawing.Point(211, 3);
+            this.inpToken.Name = "inpToken";
+            this.inpToken.Size = new System.Drawing.Size(106, 20);
+            this.inpToken.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(202, 26);
+            this.label4.TabIndex = 101;
+            this.label4.Text = "ИНН организации";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 52);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(202, 26);
+            this.label7.TabIndex = 105;
+            this.label7.Text = "Регистрационный номер ККМ";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 78);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(202, 26);
+            this.label2.TabIndex = 107;
+            this.label2.Text = "Начало диапазона сканирования";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 104);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(202, 26);
+            this.label3.TabIndex = 106;
+            this.label3.Text = "Конец диапазона сканирования";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label11
             // 
@@ -206,76 +249,24 @@
             this.label9.Text = "Наименование позиции по-умолчанию";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label7
+            // inpVatin
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.inpVatin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 52);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(202, 26);
-            this.label7.TabIndex = 105;
-            this.label7.Text = "Регистрационный номер ККМ";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.inpVatin.Location = new System.Drawing.Point(211, 29);
+            this.inpVatin.Name = "inpVatin";
+            this.inpVatin.Size = new System.Drawing.Size(106, 20);
+            this.inpVatin.TabIndex = 1;
+            this.inpVatin.TextChanged += new System.EventHandler(this.AutoToken);
             // 
-            // label3
+            // inpRegId
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.inpRegId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 104);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(202, 26);
-            this.label3.TabIndex = 106;
-            this.label3.Text = "Конец диапазона сканирования";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 78);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(202, 26);
-            this.label2.TabIndex = 107;
-            this.label2.Text = "Начало диапазона сканирования";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(202, 26);
-            this.label1.TabIndex = 108;
-            this.label1.Text = "Токен";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // inpToken
-            // 
-            this.inpToken.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.inpToken.Location = new System.Drawing.Point(211, 3);
-            this.inpToken.Name = "inpToken";
-            this.inpToken.Size = new System.Drawing.Size(106, 20);
-            this.inpToken.TabIndex = 0;
-            // 
-            // inpPeriodBegin
-            // 
-            this.inpPeriodBegin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.inpPeriodBegin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.inpPeriodBegin.Location = new System.Drawing.Point(211, 81);
-            this.inpPeriodBegin.Name = "inpPeriodBegin";
-            this.inpPeriodBegin.Size = new System.Drawing.Size(106, 20);
-            this.inpPeriodBegin.TabIndex = 3;
+            this.inpRegId.Location = new System.Drawing.Point(211, 55);
+            this.inpRegId.Name = "inpRegId";
+            this.inpRegId.Size = new System.Drawing.Size(106, 20);
+            this.inpRegId.TabIndex = 2;
             // 
             // inpPeriodEnd
             // 
@@ -286,6 +277,16 @@
             this.inpPeriodEnd.Name = "inpPeriodEnd";
             this.inpPeriodEnd.Size = new System.Drawing.Size(106, 20);
             this.inpPeriodEnd.TabIndex = 4;
+            // 
+            // inpPeriodBegin
+            // 
+            this.inpPeriodBegin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.inpPeriodBegin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.inpPeriodBegin.Location = new System.Drawing.Point(211, 81);
+            this.inpPeriodBegin.Name = "inpPeriodBegin";
+            this.inpPeriodBegin.Size = new System.Drawing.Size(106, 20);
+            this.inpPeriodBegin.TabIndex = 3;
             // 
             // inpDefMeasure
             // 
@@ -323,15 +324,14 @@
             this.inpDefMeasure.TabIndex = 7;
             this.inpDefMeasure.Text = "шт";
             // 
-            // inpVatin
+            // inpDefName
             // 
-            this.inpVatin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.inpDefName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.inpVatin.Location = new System.Drawing.Point(211, 29);
-            this.inpVatin.Name = "inpVatin";
-            this.inpVatin.Size = new System.Drawing.Size(106, 20);
-            this.inpVatin.TabIndex = 1;
-            this.inpVatin.TextChanged += new System.EventHandler(this.AutoToken);
+            this.inpDefName.Location = new System.Drawing.Point(211, 133);
+            this.inpDefName.Name = "inpDefName";
+            this.inpDefName.Size = new System.Drawing.Size(106, 20);
+            this.inpDefName.TabIndex = 5;
             // 
             // statusStrip1
             // 
@@ -366,7 +366,7 @@
             this.btnScan.TabIndex = 8;
             this.btnScan.Text = "Сканировать";
             this.btnScan.UseVisualStyleBackColor = true;
-            this.btnScan.Click += new System.EventHandler(this.clckScan);
+            this.btnScan.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnScan_MouseDown);
             // 
             // Form1
             // 
@@ -394,8 +394,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.ComboBox inpDefType;
-        private System.Windows.Forms.TextBox inpDefName;
         private System.Windows.Forms.TextBox inpRegId;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label11;
@@ -407,13 +405,15 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker inpPeriodBegin;
         private System.Windows.Forms.DateTimePicker inpPeriodEnd;
-        private System.Windows.Forms.ComboBox inpDefMeasure;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel textStatus;
         private System.Windows.Forms.ProgressBar progressStatus;
         private System.Windows.Forms.Button btnScan;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox inpVatin;
+        public System.Windows.Forms.ComboBox inpDefType;
+        public System.Windows.Forms.TextBox inpDefName;
+        public System.Windows.Forms.ComboBox inpDefMeasure;
     }
 }
 
